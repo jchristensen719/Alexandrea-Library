@@ -1,6 +1,12 @@
 # Alexandrea Library
 
-A comprehensive Python-based library management system designed for modern libraries.
+A Python-based library management system developed by Peter Hubbard.
+
+## Overview
+Library management system built with Python, featuring:
+- Modern development tools
+- Clean code practices
+- Comprehensive testing
 
 ## 🚀 Features
 - Book management
@@ -54,7 +60,7 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 👤 Author
-J Christensen (@jchristensen719)
+Peter Hubbard
 
 ## 📊 Project Status
 In active development
