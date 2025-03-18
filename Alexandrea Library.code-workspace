@@ -1,3 +1,4 @@
+// [MermaidChart: f697b0fd-69d8-427d-a63c-bce68c3c72e8]
 {
 	"folders": [
 		{
@@ -24,15 +25,33 @@
 			"editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
 		},
 		"[python]": {
-			"editor.defaultFormatter": "ms-python.python"
-		}
+			"editor.defaultFormatter": "ms-python.black-formatter",
+			"editor.formatOnSave": true,
+			"editor.codeActionsOnSave": {
+				"source.organizeImports": true
+			},
+			"editor.rulers": [88],
+			"editor.suggestSelection": "first",
+			"editor.tabSize": 4,
+			"editor.insertSpaces": true
+		},
+		"python.analysis.typeCheckingMode": "basic",
+		"python.linting.enabled": true,
+		"python.linting.pylintEnabled": true,
+		"python.formatting.provider": "black",
+		"autoDocstring.docstringFormat": "google",
+		"python.analysis.autoImportCompletions": true
 	},
 	"extensions": {
 		"recommendations": [
 			"ms-python.python",
 			"bierner.markdown-mermaid",
-			"DavidAnson.vscode-markdownlint",
-			"GitHub.copilot"
+			"GitHub.copilot",
+			"ms-python.vscode-pylance",
+			"ms-python.black-formatter",
+			"ms-python.isort",
+			"njpwerner.autodocstring",
+			"VisualStudioExptTeam.vscodeintellicode"
 		]
 	}
 }

@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+.env
+
+# VS Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# IDEs
+.idea/
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Project specific
+data/raw/*
+data/processed/*
+logs/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!logs/.gitkeep

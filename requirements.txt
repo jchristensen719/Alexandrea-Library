@@ -1,0 +1,23 @@
+beautifulsoup4
+requests
+selenium
+playwright
+pandas
+numpy
+scikit-learn
+nltk
+pymongo
+schedule
+python-dotenv
+fastapi
+uvicorn
+ollama>=0.1.0
+
+from ollama import Client
+
+client = Client()
+response = client.chat(
+    model='mistral',
+    messages=[{'role': 'user', 'content': 'Hello!'}],
+    options={'num_gpu': 0, 'num_thread': 2}
+)
