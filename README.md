@@ -1,6 +1,6 @@
 # Alexandrea Library
 
-A Python-based library management system developed by Peter Hubbard.
+A Python-based library management system.
 
 ## Overview
 Library management system built with Python, featuring:
@@ -14,43 +14,38 @@ Library management system built with Python, featuring:
 - Checkout/return system
 - Analytics and reporting
 
-## 🛠️ Installation
+## Setup
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/jchristensen719/Alexandrea-Library.git
+   ```
+2. Create a virtual environment:
+   ```bash
+   python -m venv .venv
+   .venv\Scripts\activate
+   ```
+3. Install dependencies (once requirements.txt is available):
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-1. Clone the repository
-```bash
-git clone https://github.com/jchristensen719/Alexandrea-Library.git
-cd Alexandrea-Library
-```
+## Development
+This project uses:
+- Black for code formatting
+- Pylint for code quality
+- unittest for testing
+- Type hints with basic type checking
 
-2. Create and activate virtual environment
-```bash
-python -m venv .venv
-.venv\Scripts\activate
-```
-
-3. Install dependencies
-```bash
-pip install -r requirements.txt
-```
-
-## 🧪 Development Setup
-This project uses modern Python development tools:
-- **Black**: Code formatting
-- **Pylint**: Code quality
-- **unittest**: Testing framework
-- **Type hints**: Basic type checking
-
-## 📁 Project Structure
+## Project Structure
 ```
 Alexandrea Library/
+├── .venv/                  # Virtual environment (ignored by git)
 ├── src/                    # Source code
-│   └── __init__.py
 ├── tests/                  # Test files
-│   └── __init__.py
-├── data/                   # Data files
-│   ├── raw/
-│   └── processed/
-└── logs/                   # Application logs
+├── data/                  
+│   ├── raw/               # Raw data files
+│   └── processed/         # Processed data files
+└── logs/                  # Application logs
 ```
 
 ## 🤝 Contributing
@@ -59,8 +54,8 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
 ## 📝 License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 👤 Author
-Peter Hubbard
+## Author
+J Christensen (@jchristensen719)
 
 ## 📊 Project Status
 In active development
