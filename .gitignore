@@ -8,14 +8,13 @@ venv/
 htmlcov/
 
 # IDE
-.vscode/
-.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
 
 # OS
 .DS_Store
 Thumbs.db
-
-# Removed tests/ from ignored paths
 
 # Project specific
 data/raw/*
@@ -24,6 +23,9 @@ logs/*
 !data/raw/.gitkeep
 !data/processed/.gitkeep
 !logs/.gitkeep
+
+# Ensure scrapers are tracked
+!src/scrapers/*.py
 
 # Mermaid files
 *.mmd

@@ -1,8 +1,8 @@
-beautifulsoup4
-requests
+beautifulsoup4>=4.12.0
+requests>=2.31.0
 selenium
 playwright
-pandas
+pandas>=2.1.0
 numpy
 scikit-learn
 nltk
@@ -12,6 +12,7 @@ python-dotenv
 fastapi
 uvicorn
 ollama>=0.1.0
+yfinance>=0.2.36
 
 from ollama import Client
 
