@@ -47,7 +47,10 @@ Alexandrea Library/
 ├── tests/
 │   ├── __init__.py       # Makes 'tests' a package
 │   └── test_core.py
-└── setup.py
+├── setup.py
+├── LICENSE
+├── CONTRIBUTING.md
+└── README.md
 ```
 
 ## 🤝 Contributing
