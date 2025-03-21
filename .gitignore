@@ -2,20 +2,20 @@
 __pycache__/
 *.py[cod]
 *$py.class
-.venv/
 .env
+venv/
+.coverage
+htmlcov/
 
-# VS Code
-.vscode/*
-!.vscode/settings.json
-!.vscode/extensions.json
-
-# IDEs
+# IDE
+.vscode/
 .idea/
 
-# OS specific
+# OS
 .DS_Store
 Thumbs.db
+
+# Removed tests/ from ignored paths
 
 # Project specific
 data/raw/*
@@ -24,3 +24,8 @@ logs/*
 !data/raw/.gitkeep
 !data/processed/.gitkeep
 !logs/.gitkeep
+
+# Mermaid files
+*.mmd
+*.mermaid
+[MermaidChart]*
