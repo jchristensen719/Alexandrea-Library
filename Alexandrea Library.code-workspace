@@ -49,7 +49,7 @@
 	"extensions": {
 		"recommendations": [
 			"ms-python.python",
-			 "GitHub.copilot",
+			"GitHub.copilot",
 			"ms-python.vscode-pylance",
 			"ms-python.black-formatter",
 			"ms-python.isort",
