@@ -1,6 +1,6 @@
 # Alexandrea Library
 
-A Python-based library management system.
+A Python library management system.
 
 ## Overview
 Library management system built with Python, featuring:
@@ -30,22 +30,24 @@ Library management system built with Python, featuring:
    ```
 
 ## Development
-This project uses:
-- Black for code formatting
-- Pylint for code quality
-- unittest for testing
-- Type hints with basic type checking
+
+This project uses Python 3.8+ and includes:
+- Core library functionality in `src/library`
+- Unit tests in `tests/`
+- Package configuration in `setup.py`
 
 ## Project Structure
+
 ```
 Alexandrea Library/
-├── .venv/                  # Virtual environment (ignored by git)
-├── src/                    # Source code
-├── tests/                  # Test files
-├── data/                  
-│   ├── raw/               # Raw data files
-│   └── processed/         # Processed data files
-└── logs/                  # Application logs
+├── src/
+│   └── library/
+│       ├── __init__.py    # Makes 'library' a package
+│       └── core.py
+├── tests/
+│   ├── __init__.py       # Makes 'tests' a package
+│   └── test_core.py
+└── setup.py
 ```
 
 ## 🤝 Contributing
