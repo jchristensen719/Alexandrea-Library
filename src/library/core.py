@@ -7,7 +7,7 @@ class Book:
     isbn: str
 
     def __post_init__(self):
-        """Validate and normalize ISBN after initialization."""
+        breakpoint()  # Add breakpoint here to debug ISBN validation
         if not self.isbn:
             raise ValueError("ISBN cannot be empty")
         # Normalize ISBN by removing hyphens

@@ -45,8 +45,7 @@
 	"extensions": {
 		"recommendations": [
 			"ms-python.python",
-			"bierner.markdown-mermaid",
-			"GitHub.copilot",
+			 "GitHub.copilot",
 			"ms-python.vscode-pylance",
 			"ms-python.black-formatter",
 			"ms-python.isort",
