@@ -1,77 +1,93 @@
-import logging
-import requests
-from datetime import datetime
-from typing import Any, Dict, List, Optional
+"""
+History scraper for Alexandrea Library.
 
-from bs4 import BeautifulSoup
+This module provides functionality for scraping historical book information.
+"""
+
+from typing import Any, Dict, List
+
+import requests
 
 from .base_scraper import BaseScraper
 
 
 class HistoryScraper(BaseScraper):
-    """Scraper for historical content."""
-    def __init__(self, base_url: str, era: Optional[str] = None, region: Optional[str] = None):
-        super().__init__(base_url)
-        self.era = era  # e.g., "ancient", "medieval", "modern"
-        self.region = region  # e.g., "egypt", "greece", "rome"
-        self.logger = logging.getLogger(__name__)
+    """
+    Scraper for historical book information from various sources.
 
-        # Common historical source websites
-        self.trusted_sources = [
-            "worldhistory.org",
-            "britannica.com",
-            "ancient.eu",
-            "archive.org",
-        ]
+    This scraper specializes in retrieving information about historical books,
+    including classic literature, historical documents, and manuscripts.
+    """
 
-    def extract_data(self, soup: BeautifulSoup) -> Dict[str, Any]:
-        """Extract historical data from BeautifulSoup object.
+    def fetch(self, endpoint: str) -> Any:
+        """
+        Fetch historical book data from the API endpoint.
 
         Args:
-            soup: BeautifulSoup object containing parsed HTML
+            endpoint: API endpoint or URL path to fetch
 
         Returns:
-            Dict containing extracted data including title, content, and primary sources
+            JSON response data
+
+        Raises:
+            requests.RequestException: If an error occurs during the request
         """
-        # Find all links that might be primary sources
-        primary_sources = []
-        for link in soup.find_all("a", href=True):
-            if any(source in link["href"].lower() for source in self.trusted_sources):
-                primary_sources.append(link["href"])
+        url = f"{self.base_url}/{endpoint}"
+        response = requests.get(url, headers=self.headers)
+        response.raise_for_status()
+        return response.json()
 
-        return {
-            "title": soup.title.string if soup.title else None,
-            "content": soup.get_text(),
-            "primary_sources": primary_sources,
-        }
+    def parse(self, data: Any) -> List[Dict[str, Any]]:
+        """
+        Parse historical book data into a structured format.
 
-    def process_data(self, raw_data: Dict[str, Any]) -> Dict[str, Any]:
-        """Process the extracted historical data."""
-        return raw_data
-    def scrape(self, url: str) -> Optional[Dict[str, Any]]:
-        """Scrape historical content from URL."""
-        try:
-            response = requests.get(url, timeout=30)
-            response.raise_for_status()
-            soup = self.parse_html(response.text)
-            raw_data = self.extract_data(soup)
-            return self.process_data(raw_data)
-        except Exception as e:
-            self.logger.error(f"Error scraping {url}: {str(e)}")
-            return None
-    def validate_source(self, url: str) -> bool:
-        """Check if the source is from a trusted historical website."""
-        return any(source in url.lower() for source in self.trusted_sources)
+        Args:
+            data: Raw JSON data from the API
 
-    def scrape_by_era(self, urls: List[str]) -> List[Dict[str, Any]]:
-        """Scrape multiple URLs filtering by historical era."""
-        results = []
-        for url in urls:
-            if self.validate_source(url):
-                try:
-                    data = self.scrape(url)
-                    if data:
-                        results.append(data)
-                except Exception as e:
-                    self.logger.error(f"Error scraping {url}: {e}")
-        return results
+        Returns:
+            List of book dictionaries with normalized attributes
+        """
+        if not data or "items" not in data:
+            return []
+
+        books = []
+        for item in data["items"]:
+            # Extract and normalize book data
+            book = {
+                "title": item.get("title", "Unknown Title"),
+                "author": item.get("author", "Unknown Author"),
+                "year": item.get("year") or item.get("publicationDate", "Unknown"),
+                "publisher": item.get("publisher", "Unknown Publisher"),
+                "isbn": item.get("isbn", ""),
+                "language": item.get("language", "Unknown"),
+                "categories": item.get("categories", []),
+                "historical_period": item.get("period", "Unknown"),
+                "historical_significance": item.get("significance", ""),
+            }
+            books.append(book)
+
+        return books
+
+    def search_by_period(self, period: str) -> List[Dict[str, Any]]:
+        """
+        Search for books by historical period.
+
+        Args:
+            period: Historical period (e.g., "Renaissance", "Ancient Greece")
+
+        Returns:
+            List of books from the specified period
+        """
+        return self.run(f"search?period={period}")
+
+    def search_by_author(self, author: str) -> List[Dict[str, Any]]:
+        """
+        Search for historical books by author.
+
+        Args:
+            author: Author name to search for
+
+        Returns:
+            List of books by the specified author
+        """
+        return self.run(f"search?author={author}")
