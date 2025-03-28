@@ -16,7 +16,7 @@ setup(
     python_requires=">=3.8",
     install_requires=[
         "requests>=2.25.0",
-        "dataclasses;python_version<'3.7'",
+        # "dataclasses;python_version<'3.7'", # Removed: Unnecessary with python_requires >= 3.8
     ],
     extras_require={
         "dev": [
