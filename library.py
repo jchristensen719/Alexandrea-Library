@@ -9,7 +9,7 @@ the simplified library implementation.
 import logging
 import re
 from datetime import datetime
-from typing import Any, Dict, List, Optional, Set, Tuple, Union
+from typing import List, Optional  # Removed Any, Dict, Set, Tuple, Union
 
 from src.alexandrea_library.core import Book as CoreBook
 from src.alexandrea_library.core import BookStatus
@@ -322,7 +322,7 @@ class Library:
             return True
         else:
             error_msg = (
-                f"Could not check out book. Member may have reached checkout limit."
+                "Could not check out book. Member may have reached checkout limit."
             )
             logger.error(error_msg)
             raise CheckoutError(error_msg)
@@ -383,7 +383,7 @@ class Library:
             logger.error(error_msg)
             raise ReturnError(error_msg)
 
-    def search_books(self, query: str = None, **kwargs) -> List[CoreBook]:
+    def search_books(self, query: Optional[str] = None, **kwargs) -> List[CoreBook]:
         """
         Search for books by various criteria.
 
