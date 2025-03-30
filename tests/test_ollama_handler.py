@@ -1,7 +1,5 @@
 import unittest
-
 from src.llm_integration.ollama_handler import OllamaHandler
-
 
 class TestOllamaHandler(unittest.TestCase):
     def setUp(self):
@@ -23,4 +21,4 @@ class TestOllamaHandler(unittest.TestCase):
         self.assertEqual(result['model'], "tinyllama")
 
 if __name__ == '__main__':
-    unittest.main()
+    unittest.main()8
